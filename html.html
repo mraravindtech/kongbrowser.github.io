@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KONG BROWSER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .navbar {
+            background-color: transparent; 
+            color: white;
+            padding: 10px;
+            position: absolute; 
+            width: 100%; 
+            z-index: 1; 
+        }
+        .navbar input[type="text"] {
+            padding: 10px;
+            width: 40%;
+            border: none;
+            border-radius: 5px;
+        }
+        .navbar button {
+            padding: 10px 20px;
+            background-color: #0d96eb;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <br>
+        <h1>Kong Browser</h1>
+        <input type="text" id="searchInput" placeholder="Search the web">
+        <button onclick="searchOrCheck()">Go</button>
+    </div>
+
+    <div id="popup">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <img src="bgg.gif" usemap="#image-map">
+
+    <map name="image-map">
+        <map name="image-map">
+            <area target="_blank" alt="Prime Video" title="Prime Video" href="https://www.primevideo.com" coords="501,407,65" shape="circle">
+            <area target="_blank" alt="Amazon" title="Amazon" href="https://www.amazon.com" coords="634,325,66" shape="circle">
+            <area target="_blank" alt="Whatsapp" title="Whatsapp" href="https://www.web.whatsapp.com" coords="641,478,67" shape="circle">
+            <area target="_blank" alt="Instagram" title="Instagram" href="https://www.instagram.com" coords="764,252,66" shape="circle">
+            <area target="_blank" alt="Twitter" title="Twitter" href="https://www.twitter.com" coords="772,406,66" shape="circle">
+            <area target="_blank" alt="Youtube" title="Youtube" href="https://www.youtube.com" coords="904,332,67" shape="circle">
+            <area target="_blank" alt="Netflix" title="Netflix" href="https://www.netflix.com" coords="907,479,64" shape="circle">
+            <area target="_blank" alt="Gmail" title="Gmail" href="https://www.mail.google.com" coords="1036,257,65" shape="circle">
+            <area target="_blank" alt="Facebook" title="Facebook" href="https://www.facebook.com" coords="1034,403,63" shape="circle">
+            <area target="_blank" alt="Canva" title="Canva" href="https://www.canva.com" coords="1036,562,66" shape="circle">
+            <area target="_blank" alt="Linkedin" title="Linkedin" href="https://www.linkedin.com" coords="1166,483,65" shape="circle">
+            <area target="_blank" alt="Filpkart" title="Filpkart" href="https://www.flipkart.com" coords="1170,178,64" shape="circle">
+            <area target="_blank" alt="Telegram" title="Telegram" href="https://www.telegram.com" coords="1166,331,67" shape="circle">
+        
+    </map>
+    <script>
+        function searchOrCheck() {
+            var inputText = document.getElementById("searchInput").value;
+            var wordsToCheck = ["phishing", "ngrock", "hack", "hacking", "prize", "phish"];
+            var foundWords = [];
+
+            wordsToCheck.forEach(function (word) {
+                if (inputText.toLowerCase().includes(word.toLowerCase())) {
+                    foundWords.push(word);
+                }
+            });
+
+            var popup = document.getElementById("popup");
+            var popupMessage = document.getElementById("popupMessage");
+
+            if (foundWords.length > 0) {
+                popupMessage.textContent = "This link is not safe.";
+                popup.style.display = "block";
+            } else {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(inputText);
+            }
+        }
+
+        function closePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+    </script>
+</body>
+</html>
